@@ -28,10 +28,10 @@
               <div class="col-md-10 col-lg-8">
                   <div class="post-preview">
                       <a href="#">
-                          <h2 class="post-title">Get ready to wander</h2>
-                          <h3 class="post-subtitle">Wide Eyed Wanderer is going to be launched soon</h3>
+                          <h2 class="post-title">Chatakpur - A chilly weekend getaway in the lap of nature</h2>
+                          <h3 class="post-subtitle">If you are a person looking for a quick weekend getaway from Kolkata and also want to escape the scorching heat and chaos and crowd of the city, wait no more...</h3>
                       </a>
-                      <p class="post-meta">Posted by&nbsp;<a href="#">Wide Eyed Wanderer on April 24, 2019</a></p>
+                      <p class="post-meta">Posted by&nbsp;<a href="#">Wide Eyed Wanderer on May 10, 2019</a></p>
                   </div>
                   <hr>
                   <div class="clearfix"><button class="btn btn-primary float-right" type="button">Older Posts&nbsp;⇒</button></div>

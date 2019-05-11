@@ -14,8 +14,8 @@
             </div>
         </header>
         <div class="container">
-            <h1>A weekend getaway in the lap of nature</h1>
-            <span class="subheading">by Deepjyoti Paul</span>
+            <h1>A chilly weekend getaway in the lap of nature</h1>
+            <span class="subheading">by Wide Eyed Wanderer</span>
             <br>
             <br>
             <social-sharing :url='"http://www.wideeyedwanderer.in/chatakpur"' inline-template>
@@ -61,6 +61,16 @@
 <script>
 var SocialSharing = require('vue-social-sharing');
 export default {
+    head:{
+        title: 'Chatakpur, West Bengal - Wide Eyed Wanderer',
+        meta: [
+            { name: 'twitter:image', content: '/img/IMG_2309.jpg' },
+            { name: 'description', content: 'A chilly weekend getaway in the lap of nature' },
+            { name: 'og:type', content: 'website' },
+            { name: 'og:image', content: '/img/IMG_2309.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+        ],
+    },
     data(){
         return {
             content:''
