@@ -64,10 +64,11 @@ export default {
     head:{
         title: 'Chatakpur, West Bengal - Wide Eyed Wanderer',
         meta: [
-            { name: 'twitter:image', content: '/img/IMG_2309.jpg' },
+            { name: 'twitter:image', content: 'http://www.wideeyedwanderer.in/img/IMG_2309.jpg' },
             { name: 'description', content: 'A chilly weekend getaway in the lap of nature' },
             { name: 'og:type', content: 'website' },
-            { name: 'og:image', content: '/img/IMG_2309.jpg' },
+            { name: 'og:url', content: 'http://www.wideeyedwanderer.in/chatakpur' },
+            { name: 'og:image', content: 'http://www.wideeyedwanderer.in/img/IMG_2309.jpg' },
             { name: 'twitter:card', content: 'summary_large_image' },
         ],
     },

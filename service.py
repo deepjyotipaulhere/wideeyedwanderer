@@ -49,5 +49,32 @@ def updatechatakpur():
     except Exception as ex:
         return make_response(str(ex),500)
 
+@app.route("/login", methods=['POST'])
+def login():
+    try:
+        con=connect()
+        user=con.user
+        x=request.get_json()
+        assert (x['username']!='' and x['password']!=''), 'blank'
+        userid=user.find_one({'username':x['username'],'password':x['password']})
+        assert (userid!=None), 'nf'                                                             # user not found
+        return str(userid['_id'])
+    except Exception as ex:
+        return make_response(str(ex), 500)
+
+
+@app.route("/register", methods=['POST'])
+def register():
+    try:
+        con=connect()
+        user=con.user
+        x=request.get_json()
+        assert (x['username']!='' and x['password']!=''), 'blank'
+        userid=user.insert_one({'username':x['username'],'password':x['password']}).inserted_id
+        assert (userid!=None), 'error'                                                             # user not found
+        return str(str(userid))
+    except Exception as ex:
+        return make_response(str(ex), 500)
+
 if __name__=='__main__':
     app.run(debug=True)

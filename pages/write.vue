@@ -31,17 +31,17 @@ export default {
         }
     },
     created(){
-        this.$axios.get("/chatakpur").then(response=>{
-            this.html=response.data.text
-        })
+        // this.$axios.get("/chatakpur").then(response=>{
+        //     this.html=response.data.text
+        // })
     },
     methods:{
         save(){
-            this.$axios.post("/updatechatakpur",{ 'text': this.html }).then(response=>{
-                alert("Ok")
-            }).catch(()=>{
-                alert("Error")
-            })
+            // this.$axios.post("/updatechatakpur",{ 'text': this.html }).then(response=>{
+            //     alert("Ok")
+            // }).catch(()=>{
+            //     alert("Error")
+            // })
         }
     }
 }

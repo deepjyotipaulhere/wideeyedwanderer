@@ -5,15 +5,15 @@
         <div
             class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item" role="presentation"><nuxt-link class="nav-link" to="/">Home</nuxt-link></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">About us</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="contact.html">Contact us</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="post.html">Blog Post</a></li>
+                <li class="nav-item" role="presentation"><nuxt-link class="nav-link" :to="$cookies.get('_bid')?'/write':'/login'">Write your blog</nuxt-link></li>
             </ul>
         </div>
       </div>
     </nav>
-    <nuxt />
+    <nuxt style="clear:both" />
     <footer>
       <div class="container">
           <div class="row">

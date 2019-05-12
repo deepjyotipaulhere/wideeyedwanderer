@@ -6,60 +6,42 @@
               <div class="row">
                   <div class="col-md-10 col-lg-8 mx-auto">
                       <div class="site-heading">
-                          <h1>Coming Soon!</h1><span class="subheading">Get ready to explore the world in the footsteps of a wanderer</span></div>
+                          <h3 class="display-4" style="font-weight:800">Wide Eyed Wanderer</h3><span class="subheading">Get ready to explore the world in the footsteps of a wanderer</span></div>
                   </div>
               </div>
           </div>
       </header>
       <div class="container">
-          <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4"><label>Subscribe to newsletter</label>
-                    <form>
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input type="email" required v-model="regemail" class="form-control" placeholder="Enter your email" style="height: 53px;" />
-                            <div class="input-group-append"><button class="btn btn-primary" type="button" @click.prevent="register">Go!</button></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-4"></div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><label>Subscribe to newsletter</label>
+                <form>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input type="email" required v-model="regemail" class="form-control" placeholder="Enter your email" style="height: 53px;" />
+                        <div class="input-group-append"><button class="btn btn-primary" type="button" @click.prevent="register">Go!</button></div>
+                    </div>
+                </form>
             </div>
-          <div class="row">
-              <div class="col-md-10 col-lg-8">
-                  <div class="post-preview">
-                      <nuxt-link to="/chatakpur">
-                          <h2 class="post-title">Chatakpur - A chilly weekend getaway in the lap of nature</h2>
-                          <h3 class="post-subtitle">If you are a person looking for a quick weekend getaway from Kolkata and also want to escape the scorching heat and chaos and crowd of the city, wait no more...</h3>
-                      </nuxt-link>
-                      <p class="post-meta">Posted by&nbsp;<a href="#">Wide Eyed Wanderer on May 10, 2019</a></p>
-                  </div>
-                  <hr>
-                  <div class="clearfix"><button class="btn btn-primary float-right" type="button">Older Posts&nbsp;⇒</button></div>
-              </div>
-          </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-10 col-lg-8">
+                <div class="post-preview">
+                    <nuxt-link to="/chatakpur">
+                        <h2 class="post-title">Chatakpur - A chilly weekend getaway in the lap of nature</h2>
+                        <h3 class="post-subtitle">If you are a person looking for a quick weekend getaway from Kolkata and also want to escape the scorching heat and chaos and crowd of the city, wait no more...</h3>
+                    </nuxt-link>
+                    <p class="post-meta">Posted by&nbsp;<a href="#">Wide Eyed Wanderer on May 10, 2019</a></p>
+                </div>
+                <hr>
+                <div class="clearfix"><button class="btn btn-primary float-right" type="button">Older Posts&nbsp;⇒</button></div>
+            </div>
+            <div class="col-md-2 col-lg-4">
+                <iframe src="https://www.youtube.com/embed/3GC1Ur3oNMo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:200px"></iframe>
+            </div>
+        </div>
       </div>
-      <footer>
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-10 col-lg-8 mx-auto">
-                      <ul class="list-inline text-center">
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></li>
-                        <li class="list-inline-item">
-                            <a href="https://www.facebook.com/wide.eyed.wanderer123">
-                                <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="https://www.youtube.com/channel/UCzZbwxB8Bj5uBzAIhyNpGbw">
-                                <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-youtube fa-stack-1x fa-inverse"></i></span>
-                            </a>
-                        </li>
-                      </ul>
-                      <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Wide Eyed Wanderer 2019</p>
-                  </div>
-              </div>
-          </div>
-      </footer>
         <div role="dialog" tabindex="-1" class="modal fade" id="newmodal">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content" style="background-image:url('https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');background-size:cover">
@@ -83,6 +65,16 @@ export default{
         return {
             regemail:''
         }
+    },
+
+    head:{
+        meta:[
+            { name: 'twitter:image', content: '/img/banner.png' },
+            { name: 'description', content: 'A traveller with the urge to explore the world' },
+            { name: 'og:type', content: 'website' },
+            { name: 'og:image', content: '/img/banner.png' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+        ]
     },
 
     created(){

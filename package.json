@@ -14,6 +14,8 @@
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
+    "nuxt-universal-cookies": "0.0.5",
+    "vee-validate": "^2.2.7",
     "vue-social-sharing": "^2.4.3"
   },
   "devDependencies": {

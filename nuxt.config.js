@@ -11,11 +11,6 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'twitter:image', content: '/img/banner.png' },
-      { name: 'description', content: 'A traveller with the urge to explore the world' },
-      { name: 'og:type', content: 'website' },
-      { name: 'og:image', content: '/img/banner.png' },
-      { name: 'twitter:card', content: 'summary_large_image' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' },
@@ -54,12 +49,15 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    {
+      src: 'nuxt-universal-cookies',
+      options: {}
+    }
   ],
   /*
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
     // baseURL: 'http://localhost:5000'
     baseURL: 'http://www.wideeyedwanderer.in/api'
   },
