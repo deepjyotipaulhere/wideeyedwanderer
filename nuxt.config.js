@@ -49,10 +49,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    {
-      src: 'nuxt-universal-cookies',
-      options: {}
-    }
+    ['cookie-universal-nuxt', { alias: 'cookies' }]
   ],
   /*
   ** Axios module configuration

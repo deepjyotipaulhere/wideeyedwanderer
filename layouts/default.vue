@@ -6,15 +6,16 @@
             class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item" role="presentation"><nuxt-link class="nav-link" to="/">Home</nuxt-link></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">About us</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="contact.html">Contact us</a></li>
+                <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">About us</a></li> -->
+                <li class="nav-item" role="presentation" v-if="$cookies.get('_bid')"><nuxt-link class="nav-link" to="/myposts">My Posts</nuxt-link></li>
                 <li class="nav-item" role="presentation"><nuxt-link class="nav-link" :to="$cookies.get('_bid')?'/write':'/login'">Write your blog</nuxt-link></li>
+                <li class="nav-item" role="presentation" v-if="$cookies.get('_bid')"><button class="btn btn-link btn-sm text-danger" style="padding-top:7px;padding-bottom:7px" @click.prevent="logout">Log Out</button></li>
             </ul>
         </div>
       </div>
     </nav>
     <nuxt style="clear:both" />
-    <footer>
+    <footer style="clear:both">
       <div class="container">
           <div class="row">
               <div class="col-md-10 col-lg-8 mx-auto">
@@ -40,7 +41,12 @@
 </template>
 <script>
 export default {
-  
+  methods:{
+    logout(){
+      this.$cookies.remove("_bid")
+      location.href="/"
+    }
+  }
 }
 </script>
 

@@ -6,6 +6,9 @@
                 <form method="post">
                     <h2 class="text-center"><strong>Create</strong> an account.</h2>
                     <div class="form-group">
+                        <input class="form-control" type="text" name="fullname" placeholder="Full Name" v-model="user.name" />
+                    </div>
+                    <div class="form-group">
                         <input class="form-control" type="email" name="email" placeholder="Email" v-model="user.username" />
                     </div>
                     <div class="form-group">
@@ -40,6 +43,7 @@ export default {
     data(){
         return {
             user:{
+                name:'',
                 username:'',
                 password:''
             }

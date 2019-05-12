@@ -27,15 +27,15 @@
         <br>
         <div class="row">
             <div class="col-md-10 col-lg-8">
-                <div class="post-preview">
-                    <nuxt-link to="/chatakpur">
-                        <h2 class="post-title">Chatakpur - A chilly weekend getaway in the lap of nature</h2>
-                        <h3 class="post-subtitle">If you are a person looking for a quick weekend getaway from Kolkata and also want to escape the scorching heat and chaos and crowd of the city, wait no more...</h3>
+                <div class="post-preview" v-for="(x,i) in posts" :key="i">
+                    <nuxt-link :to="'/post?v='+x._id+'&title='+x.title">
+                        <h2 class="post-title">{{x.title}}</h2>
+                        <h3 class="post-subtitle">{{x.text}}</h3>
                     </nuxt-link>
-                    <p class="post-meta">Posted by&nbsp;<a href="#">Wide Eyed Wanderer on May 10, 2019</a></p>
+                    <p class="post-meta">Posted by&nbsp;<a href="#">{{x.name}} on {{new Date(x.date).toDateString()}}</a></p>
                 </div>
                 <hr>
-                <div class="clearfix"><button class="btn btn-primary float-right" type="button">Older Posts&nbsp;⇒</button></div>
+                <!-- <div class="clearfix"><button class="btn btn-primary float-right" type="button">Older Posts&nbsp;⇒</button></div> -->
             </div>
             <div class="col-md-2 col-lg-4">
                 <iframe src="https://www.youtube.com/embed/3GC1Ur3oNMo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:200px"></iframe>
@@ -63,7 +63,8 @@
 export default{
     data(){
         return {
-            regemail:''
+            regemail:'',
+            posts:[]
         }
     },
 
@@ -79,6 +80,9 @@ export default{
 
     created(){
         this.$axios.get("/hit")
+        this.$axios.get("/getuserposts/0").then(response=>{
+            this.posts=response.data
+        })
     },
 
     methods:{
