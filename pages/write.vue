@@ -69,7 +69,7 @@ export default {
     },
     methods:{
         save(){
-            this.content.by=this.$cookies.get("_bid")
+            this.content.by=this.$cookies.get("bid")
             if(this.$route.query.id)
             {
                 this.$axios.post("/updateblog",this.content).then(response=>{

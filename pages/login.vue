@@ -43,7 +43,7 @@ export default {
     methods:{
         login(){
             this.$axios.post("/login",this.user).then(response=>{
-                this.$cookies.set('_bid', response.data)
+                this.$cookies.set('bid', response.data)
                 location.href="/"
             })
         }

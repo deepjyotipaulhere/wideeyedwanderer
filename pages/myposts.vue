@@ -27,7 +27,7 @@ export default {
     },
 
     created(){
-        this.$axios.get("/getuserposts/"+this.$cookies.get("_bid")).then(response=>{
+        this.$axios.get("/getuserposts/"+this.$cookies.get("bid")).then(response=>{
             this.posts=response.data
         })
     }

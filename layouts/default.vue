@@ -1,5 +1,6 @@
 <template>
   <div>
+    <no-ssr>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
       <div class="container"><a class="navbar-brand" href="/"><img src="/img/fulllogo.png" height="50px"></a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <div
@@ -7,9 +8,9 @@
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item" role="presentation"><nuxt-link class="nav-link" to="/">Home</nuxt-link></li>
                 <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">About us</a></li> -->
-                <li class="nav-item" role="presentation" v-if="$cookies.get('_bid')"><nuxt-link class="nav-link" to="/myposts">My Posts</nuxt-link></li>
-                <li class="nav-item" role="presentation"><nuxt-link class="nav-link" :to="$cookies.get('_bid')?'/write':'/login'">Write your blog</nuxt-link></li>
-                <li class="nav-item" role="presentation" v-if="$cookies.get('_bid')"><button class="btn btn-link btn-sm text-danger" style="padding-top:7px;padding-bottom:7px" @click.prevent="logout">Log Out</button></li>
+                <li class="nav-item" role="presentation" v-if="$cookies.get('bid')"><nuxt-link class="nav-link" to="/myposts">My Posts</nuxt-link></li>
+                <li class="nav-item" role="presentation"><nuxt-link class="nav-link" :to="$cookies.get('bid')?'/write':'/login'">Write your blog</nuxt-link></li>
+                <li class="nav-item" role="presentation" v-if="$cookies.get('bid')"><button class="btn btn-link btn-sm text-danger" style="padding-top:7px;padding-bottom:7px" @click.prevent="logout">Log Out</button></li>
             </ul>
         </div>
       </div>
@@ -37,13 +38,14 @@
           </div>
       </div>
     </footer>
+    </no-ssr>
   </div>
 </template>
 <script>
 export default {
   methods:{
     logout(){
-      this.$cookies.remove("_bid")
+      this.$cookies.remove("bid")
       location.href="/"
     }
   }
