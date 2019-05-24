@@ -68,5 +68,9 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+  env:{
+    // baseURL: 'http://localhost:5000',
+    baseURL: 'http://www.wideeyedwander.in/api',
   }
 }

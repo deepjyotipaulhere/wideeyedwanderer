@@ -80,7 +80,7 @@ export default {
         }
     },
     mounted(){
-        document.title=this.$route.query.title+" - Wide Eyed Wanderer"
+        document.title=this.content.title+" - Wide Eyed Wanderer"
         var meta=document.createElement("meta")
         meta.name="twitter:image"
         meta.content="http://www.wideeyedwanderer.in/img/IMG_2309.jpg"

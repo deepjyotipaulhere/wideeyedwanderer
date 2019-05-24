@@ -46,7 +46,7 @@ def updateblog():
         blog=con.blog
         p=request.get_json()
         from bson.objectid import ObjectId
-        x=blog.update_one({ "_id": ObjectId(p["_id"]) }, { "$set": { "text": str(p['text']), "title": str(p['title']) } })
+        x=blog.update_one({ "_id": ObjectId(p["_id"]) }, { "$set": { "text": str(p['text']), "title": str(p['title']),"coverphoto": str(p['coverphoto']) } })
         return "ok"
     except Exception as ex:
         return make_response(str(ex),500)
@@ -111,6 +111,33 @@ def getuserposts(uid):
         return jsonify(k)
     except Exception as ex:
         return make_response(str(ex))
+
+@app.route("/uploadimage", methods=['POST'])
+def uploadimage():
+    try:
+        x=request.files['test']
+        fname=str(x.filename)
+        ftype=str(x.content_type)
+        from gridfs import GridFS
+        
+        con=connect()
+        fs=GridFS(con,"images")
+        # with open(x,"r") as f:
+        image=fs.put(x.stream, content_type=ftype, filename=fname)
+        return str(image)
+    except Exception as ex:
+        print(ex)
+        return make_response(str(ex),500)
+
+@app.route("/getimage/<id>")
+def getimage(id):
+    from gridfs import GridFS
+    con=connect()
+    fs=GridFS(con,"images")
+    from bson import objectid
+    gridout = fs.get(objectid.ObjectId(id)).read()
+    import flask
+    return flask.Response(gridout, mimetype='image/*')
 
 if __name__=='__main__':
     app.run(debug=True)

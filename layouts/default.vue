@@ -16,7 +16,7 @@
       </div>
     </nav>
     <nuxt style="clear:both" />
-    <footer style="clear:both">
+    <footer style="clear:both;">
       <div class="container">
           <div class="row">
               <div class="col-md-10 col-lg-8 mx-auto">
