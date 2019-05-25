@@ -19,6 +19,7 @@
             <span class="subheading">published on {{new Date(content.date).toDateString()}}</span>
             <br>
             <br>
+            <no-ssr>
             <social-sharing :url='"http://www.wideeyedwanderer.in/post?v="+$route.query.v' inline-template>
                 <div>
                     <button>
@@ -53,6 +54,7 @@
                     </button>
                 </div>
             </social-sharing>
+            </no-ssr>
             <br>
             <div v-html="content.text"></div>
         </div>
@@ -64,6 +66,20 @@ var SocialSharing = require('vue-social-sharing');
 export default {
     head(){
         return{
+            title: this.$route.query.title+" - Wide Eyed Wanderer",
+            meta:[
+                { name: 'og:type', content: 'website' },
+                { name: 'og:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
+                { name: 'og:description', content: this.$route.query.title },
+                { name: 'og:url', content: process.browser?location.href:'' },
+                { name: 'og:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.content.coverphoto },
+
+                { name: 'twitter:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
+                { name: 'twitter:description', content: this.$route.query.title },
+                { name: 'twitter:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.content.coverphoto },
+
+            ]
+            
         }
     },
     data(){
@@ -72,34 +88,6 @@ export default {
         }
     },
     mounted(){
-        document.title=this.$route.query.title+" - Wide Eyed Wanderer"
-        var meta=document.createElement("meta")
-        meta.name="twitter:image"
-        document.getElementsByTagName('head')[0].appendChild(meta)
-        
-        var meta=document.createElement("meta")
-        meta.name="description"
-        meta.content=this.$route.query.title
-        document.getElementsByTagName('head')[0].appendChild(meta)
-
-        var meta=document.createElement("meta")
-        meta.name="og:type"
-        meta.content="website"
-        document.getElementsByTagName('head')[0].appendChild(meta)
-
-        var meta=document.createElement("meta")
-        meta.name="og:url"
-        meta.content=process.browser?location.href:'' 
-        document.getElementsByTagName('head')[0].appendChild(meta)
-
-        var meta=document.createElement("meta")
-        meta.name="og:image"
-        document.getElementsByTagName('head')[0].appendChild(meta)
-
-        var meta=document.createElement("meta")
-        meta.name="twitter:card"
-        meta.content="summary_large_image"
-        document.getElementsByTagName('head')[0].appendChild(meta)
 
     },
     components:{

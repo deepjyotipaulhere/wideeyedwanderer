@@ -1,6 +1,6 @@
 <template>
   <div>
-    <no-ssr>
+    
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
       <div class="container"><a class="navbar-brand" href="/"><img src="/img/fulllogo.png" height="50px"></a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <div
@@ -38,7 +38,6 @@
           </div>
       </div>
     </footer>
-    </no-ssr>
   </div>
 </template>
 <script>
