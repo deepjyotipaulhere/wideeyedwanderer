@@ -139,5 +139,14 @@ def getimage(id):
     import flask
     return flask.Response(gridout, mimetype='image/*')
 
+
+@app.route("/view/<id>", methods=['GET'])
+def view(id):
+    con=connect()
+    blog=con.blog
+    from bson.objectid import ObjectId
+    x=blog.update_one({ "_id": ObjectId(str(id)) }, { "$inc": { "view": 1 } })
+    return jsonify("ok")
+
 if __name__=='__main__':
     app.run(debug=True)

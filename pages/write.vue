@@ -129,6 +129,7 @@ export default {
                 })
             }
             else{
+                this.content.view=0
                 this.$axios.post("/createblog",this.content).then(response=>{
                     $('.toast').toast('show')
                     this.$router.push("/write?id="+response.data)
