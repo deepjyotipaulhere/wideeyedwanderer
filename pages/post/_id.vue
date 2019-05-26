@@ -72,11 +72,11 @@ export default {
                 { name: 'og:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
                 { name: 'og:description', content: this.$route.query.title },
                 // { name: 'og:url', content: location.href},
-                { name: 'og:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.content.coverphoto },
+                { name: 'og:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.$route.query.cover },
 
                 { name: 'twitter:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
                 { name: 'twitter:description', content: this.$route.query.title },
-                { name: 'twitter:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.content.coverphoto },
+                { name: 'twitter:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.$route.query.cover },
 
             ]
             

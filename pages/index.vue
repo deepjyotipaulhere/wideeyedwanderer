@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-10 col-lg-8">
                 <div class="post-preview" v-for="(x,i) in posts" :key="i">
-                    <a :href="'/post?v='+x._id+'&title='+x.title">
+                    <a :href="'/post?v='+x._id+'&title='+x.title+'&cover='+x.coverphoto">
                         <h2 class="post-title">{{x.title}}</h2>
                         <h3 class="post-subtitle">{{x.text}}</h3>
                     </a>
