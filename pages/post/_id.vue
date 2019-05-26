@@ -20,7 +20,7 @@
             <br>
             <br>
             <no-ssr>
-            <social-sharing :url='"http://www.wideeyedwanderer.in/post?v="+$route.query.v' inline-template>
+            <social-sharing :url='$route.fullpath' inline-template>
                 <div>
                     <button>
                         <network network="facebook">
