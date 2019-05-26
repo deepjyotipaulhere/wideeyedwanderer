@@ -71,7 +71,7 @@ export default {
                 { name: 'og:type', content: 'website' },
                 { name: 'og:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
                 { name: 'og:description', content: this.$route.query.title },
-                { name: 'og:url', content: location.href},
+                // { name: 'og:url', content: location.href},
                 { name: 'og:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.content.coverphoto },
 
                 { name: 'twitter:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
