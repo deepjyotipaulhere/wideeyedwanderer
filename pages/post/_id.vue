@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header class="masthead" :style="{'background-image':'url(http://www.wideeyedwanderer.in/api/getimage/'+content.coverphoto+')', 'background-position':'center', 'background-size':'cover'}">
+        <header v-if="loaded" class="masthead" :style="{'background-image':'url(http://www.wideeyedwanderer.in/api/getimage/'+content.coverphoto+')', 'background-position':'center', 'background-size':'cover'}">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -20,40 +20,40 @@
             <br>
             <br>
             <no-ssr>
-            <social-sharing :url='$route.fullpath' inline-template>
-                <div>
-                    <button>
-                        <network network="facebook">
-                            <i class="fa fa-fw fa-facebook"></i>
+                <social-sharing :url='$route.fullpath' inline-template>
+                    <div>
+                        <button>
+                            <network network="facebook">
+                                <i class="fa fa-fw fa-facebook"></i>
+                            </network>
+                        </button>
+                        <button>
+                        <network network="linkedin">
+                        <i class="fa fa-fw fa-linkedin"></i>
                         </network>
-                    </button>
-                    <button>
-                    <network network="linkedin">
-                    <i class="fa fa-fw fa-linkedin"></i>
-                    </network>
-                    </button>
-                    <button>
-                    <network network="pinterest">
-                    <i class="fa fa-fw fa-pinterest"></i>
-                    </network>
-                    </button>
-                    <button>
-                    <network network="reddit">
-                    <i class="fa fa-fw fa-reddit"></i>
-                    </network>
-                    </button>
-                    <button>
-                    <network network="twitter">
-                    <i class="fa fa-fw fa-twitter"></i>
-                    </network>
-                    </button>
-                    <button>
-                    <network network="whatsapp">
-                    <i class="fa fa-fw fa-whatsapp"></i>
-                    </network>
-                    </button>
-                </div>
-            </social-sharing>
+                        </button>
+                        <button>
+                        <network network="pinterest">
+                        <i class="fa fa-fw fa-pinterest"></i>
+                        </network>
+                        </button>
+                        <button>
+                        <network network="reddit">
+                        <i class="fa fa-fw fa-reddit"></i>
+                        </network>
+                        </button>
+                        <button>
+                        <network network="twitter">
+                        <i class="fa fa-fw fa-twitter"></i>
+                        </network>
+                        </button>
+                        <button>
+                        <network network="whatsapp">
+                        <i class="fa fa-fw fa-whatsapp"></i>
+                        </network>
+                        </button>
+                    </div>
+                </social-sharing>
             </no-ssr>
             <br>
             <div v-html="content.text"></div>
@@ -84,7 +84,8 @@ export default {
     },
     data(){
         return {
-            content:{}
+            content:{},
+            loaded: false
         }
     },
     mounted(){
@@ -101,7 +102,9 @@ export default {
             this.$axios.get("/getblog/"+this.$route.query.v).then(response=>{
                 this.content=response.data
             }).then(()=>{
-                this.$axios.get("/view/"+this.$route.query.v)
+                this.$axios.get("/view/"+this.$route.query.v).then(r=>{
+                    this.loaded=true
+                })
             })
         }
     }
