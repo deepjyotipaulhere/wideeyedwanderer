@@ -19,8 +19,8 @@
             <span class="subheading">published on {{new Date(content.date).toDateString()}}</span>
             <br>
             <br>
-            <no-ssr>
-                <social-sharing :url='$route.fullpath' inline-template>
+            <!-- <no-ssr> -->
+                <social-sharing :title="$route.query.title" inline-template :url="'http://www.wideeyedwanderer.in'+ this.$route.fullPath">
                     <div>
                         <button>
                             <network network="facebook">
@@ -54,7 +54,7 @@
                         </button>
                     </div>
                 </social-sharing>
-            </no-ssr>
+            <!-- </no-ssr> -->
             <br>
             <div v-html="content.text"></div>
         </div>
@@ -68,18 +68,18 @@ export default {
         return{
             title: this.$route.query.title+" - Wide Eyed Wanderer",
             meta:[
+                { name: 'description', content:this.$route.query.title },
                 { name: 'og:type', content: 'website' },
+                { name: 'og:site_name', content: 'Wide Eyed Wanderer' },
                 { name: 'og:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
                 { name: 'og:description', content: this.$route.query.title },
-                // { name: 'og:url', content: location.href},
+                { name: 'og:url', content: 'http://www.wideeyedwanderer.in'+ this.$route.fullPath},
                 { name: 'og:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.$route.query.cover },
 
                 { name: 'twitter:title', content: this.$route.query.title+" - Wide Eyed Wanderer" },
                 { name: 'twitter:description', content: this.$route.query.title },
                 { name: 'twitter:image', content: 'http://www.wideeyedwanderer.in/api/getimage/'+this.$route.query.cover },
-
             ]
-            
         }
     },
     data(){

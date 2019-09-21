@@ -29,8 +29,8 @@
             <div class="col-md-10 col-lg-8">
                 <div class="post-preview" v-for="(x,i) in posts" :key="i">
                     <nuxt-link :to="'/post?v='+x._id+'&title='+x.title+'&cover='+x.coverphoto">
-                        <h2 class="post-title">{{x.title}}</h2>
-                        <h3 class="post-subtitle">{{x.text}}</h3>
+                        <h2 class="post-title" style="font-weight:bolder !important">{{x.title}}</h2>
+                        <h5 class="post-subtitle">{{x.text}}</h5>
                     </nuxt-link>
                     <p class="post-meta">Posted by&nbsp;<a href="#">{{x.name}} on {{new Date(x.date).toDateString()}}</a></p>
                 </div>
