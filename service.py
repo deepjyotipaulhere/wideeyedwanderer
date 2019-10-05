@@ -136,10 +136,10 @@ def register():
         user=con.wew.user
         x=request.get_json()
         assert (x['username']!='' and x['password']!=''), 'blank'
-        userid=user.insert_one({'username':x['username'],'password':x['password']}).inserted_id
+        userid=user.insert_one(x).inserted_id
         assert (userid!=None), 'error'                                                             # user not found
         con.close()
-        return str(str(userid))
+        return str(userid)
     except Exception as ex:
         con.close()
         return make_response(str(ex), 500)
