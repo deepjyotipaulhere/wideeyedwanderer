@@ -1,6 +1,6 @@
 from flask import Flask,request,jsonify, make_response
 from flask_cors import CORS
-from connection import connect
+from connection import connect, image_fetch_path, image_save_path
 
 app=Flask(__name__)
 CORS(app)
@@ -169,19 +169,18 @@ def getuserposts(uid):
 
 @app.route("/uploadimage", methods=['POST'])
 def uploadimage():
+    from werkzeug.utils import secure_filename
     con=connect()
     try:
+        import random
+        import os
         x=request.files['test']
-        fname=str(x.filename)
-        ftype=str(x.content_type)
-        from gridfs import GridFS
-        
-        
-        fs=GridFS(con.wew,"images")
-        # with open(x,"r") as f:
-        image=fs.put(x.stream, content_type=ftype, filename=fname)
+        filename = secure_filename(str(random.randint(1,10000))+str(hash(x.filename))+x.filename)
+        x.save(os.path.join(image_save_path, filename))
+        photo=con.wew.photos
+        photoid=photo.insert_one({'path':filename})
         con.close()
-        return str(image)
+        return getimage(str(photoid.inserted_id))
     except Exception as ex:
         print(ex)
         con.close()
@@ -193,14 +192,10 @@ def uploadimage():
 def getimage(id):
     con=connect()
     try:
-        from gridfs import GridFS
-        
-        fs=GridFS(con.wew,"images")
-        from bson import objectid
-        gridout = fs.get(objectid.ObjectId(id)).read()
-        import flask
-        con.close()
-        return flask.Response(gridout, mimetype='image/*')
+        photo=con.wew.photos
+        from bson.objectid import ObjectId
+        x=photo.find_one({"_id":ObjectId(id)})
+        return image_fetch_path+x["path"]
     except Exception as ex:
         con.close()
         print(ex)
@@ -213,7 +208,7 @@ def view(id):
     con=connect()
     blog=con.wew.blog
     from bson.objectid import ObjectId
-    x=blog.update_one({ "_id": ObjectId(str(id)) }, { "$inc": { "view": 1 } })
+    blog.update_one({ "_id": ObjectId(str(id)) }, { "$inc": { "view": 1 } })
     con.close()
     return jsonify("ok")
 
