@@ -177,6 +177,9 @@ def uploadimage():
         x=request.files['test']
         filename = secure_filename(str(random.randint(1,10000))+str(hash(x.filename))+x.filename)
         x.save(os.path.join(image_save_path, filename))
+        from PIL import Image
+        image=Image.open(os.path.join(image_save_path, filename))
+        image.save(os.path.join(image_save_path, filename),quality=20,optimize=True)
         photo=con.wew.photos
         photoid=photo.insert_one({'path':filename})
         con.close()
