@@ -6,6 +6,18 @@ app=Flask(__name__)
 CORS(app)
 
 
+
+@app.route("/videos", methods=['GET'])
+def videos():
+    con=connect()
+    video=con.wew.videos
+    x=video.find({},{"_id":0})
+    k=[]
+    for i in x:
+        k.append(i)
+    con.close()
+    return jsonify(k)
+
 @app.route("/insertcomment", methods=['POST'])
 def insertcomment():
     con=connect()
