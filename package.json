@@ -17,7 +17,7 @@
     "filepond": "^4.4.7",
     "filepond-plugin-file-validate-type": "^1.2.4",
     "filepond-plugin-image-preview": "^4.1.1",
-    "nuxt": "^2.4.0",
+    "nuxt": "^3.4.3",
     "nuxt-universal-cookies": "0.0.5",
     "vee-validate": "^2.2.7",
     "vue-filepond": "^5.1.1",
